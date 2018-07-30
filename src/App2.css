@@ -1,0 +1,122 @@
+
+body {
+  margin: 0;
+  background-color: white;
+}
+
+.App {
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  margin: 0;
+  padding: 0;
+  flex-direction: row;
+  display: flex;
+  width: 1500px;
+  height: 1000px;
+  position: relative;
+}
+
+.wrapper {
+	width: 2000px;
+	height: 1800px;
+  margin: 30px auto;
+  margin-top: 100px;
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	background-color: white;
+}
+.header-wrap {
+  display: flex;
+  flex-direction: row;
+}
+#title {
+  width: 300px;
+  height: 100px;
+  position: absolute;
+  top: 700;
+  left: 550px;
+  font-size: 4rem;
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+.card-indicator {
+	position: absolute;
+	top: 200px;
+	left: 310px;
+  color: black;
+  font-size: 1.5rem;
+}
+
+.cards-wrap {
+	margin-top: 50px;
+	width: 1000px;
+	height: 800px;
+	display: flex;
+	flex-direction: row-reverse;
+	overflow: hidden;
+}
+
+.card-el {
+	align-self: flex-end;
+	margin-left: 50px;
+	flex: 0 0 100px;
+	height: 500px;
+	min-width: 200px;
+	font-size: 3rem;
+	text-align: center;
+  line-height: 125px;
+}
+.card-img {
+  object-fit: fill;
+  height: 100%;
+  width: 100%;
+  display: block;
+
+}
+.card-info {
+	width: 300px;
+	height: 600px;
+}
+
+.card-info-data {
+  margin-top: 200px;
+  padding-left: 50px;
+  height: 500px;
+  color: black;
+}
+
+#item-name {
+  font-size: 4rem;
+  letter-spacing: 0.75rem;
+  font-weight: 500;
+}
+
+#item-description {
+  letter-spacing: 0.25rem;
+  font-size: 1.2rem;
+  font-weight: 350;
+}
+
+.card-info-nav {
+	height: 200px;
+}
+
+.btn {
+  border-radius: 50%;
+  /* padding: 2rem; */
+  margin-left: 50px;
+  align-content: center;
+  font-size: 2rem;
+  font-weight: 300;
+  width: 100px;
+  height: 100px;
+  box-shadow: 1px grey ;
+  border: 2px solid lightpink;
+  background-color: lightpink;
+  color: white;
+  text-align: center;
+}
