@@ -42,55 +42,111 @@ class App extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     // set up variables needed
+    TweenLite.set( this.state.cards[this.state.imageIndex], {
+      minWidth: 200, height: 2000
+    })
 
-    const { imageIndex: previous } = prevState;
-    const { imageIndex } = this.state
-
-    if (previous !== imageIndex) {
-      let galleryX, selectedX, resetX;
-
+    const { imageIndex: preSel } = prevState;
+    const { imageIndex } = this.state;
+    if (preSel !== imageIndex) {
+      let groupX, currentX, resetX;
       if (imageIndex === 0) {
-        galleryX = resetX = 0
-        selectedX = '+-150'
+        groupX = resetX = 0;
+        currentX = "+=160";
       } else {
-        galleryX = selectedX = '+=100'
-        resetX = (110 * previous) - 500
+        groupX = currentX = "+=110";
+        resetX = (110 * preSel) - 490
       }
+      const cards = this.state.cards;
 
-      const currentCards = this.state.cards
-      const tl = new TimelineLite( { paused: true })
+      let selectedCard = '#card-el-'
+      selectedCard += imageIndex
 
+    
+
+      console.log(selectedCard)
+
+      const tl = new TimelineLite({ paused: true });
       tl
-        .to(currentCards[imageIndex], 0.5, { minWidth: 150, height: 450 }, 0)
-        .to(currentCards, 0.5, { x: galleryX }, 0)
-        .to(currentCards[previous], 0.5, { minWidth: 100, height: 125, x: selectedX }, 0)
-        .set(currentCards[previous], { x: resetX })
-        .play();
-    }
+        
+        //.to('#card-el-1', 0.5, { minWidth: 150, height: 1000 }, 0)
 
-    if (this.state.imageIndex !== prevState.imageIndex) {
-      console.log(this.state.imageIndex + 'component update to this imageIndex')
+        .to({selectedCard}, 0.5, { minWidth: 250, height: 1000 }, 0) // needs to target 
+        .to(selectedCard, 0.5, { minWidth: 150, height: 450 }, 0)
+        .to(cards, 0.5, { x: groupX }, 0)
+        .to(cards[preSel], 0.5, { minWidth: 100, height: 125, x: currentX }, 0)
+        .set(cards[preSel], { x: resetX })
+
+        .to(cards[imageIndex], 0.5, { minWidth: 150, height: 450 }, 0)
+        .to(cards, 0.5, { x: groupX }, 0)
+        .to(cards[preSel], 0.5, { minWidth: 100, height: 125, x: currentX }, 0)
+        .set(cards[preSel], { x: resetX })
+        .play();
     }
   }
 
+
+  //   const { imageIndex: previous } = prevState;
+  //   const { imageIndex } = this.state
+
+  //   if (previous !== imageIndex) {
+  //     let galleryX, selectedX, resetX;
+
+  //     if (imageIndex === 0) {
+  //       galleryX = resetX = 0
+  //       selectedX = '+-450'
+  //     } else {
+  //       galleryX = selectedX = '+=400'
+  //       resetX = (110 * previous) - 500
+  //     }
+
+  //     const { cards } = this.state
+  //     const tl = new TimelineLite( { paused: true })
+
+  //     tl
+  //       .to(cards[imageIndex], 0.5, { minWidth: 200, height: 1000 }, 0)
+  //       .to(cards, 0.5, { x: galleryX }, 0)
+  //       //.to('#selected', 0.5, { height: 3000})
+  //       .to(cards[previous], 0.5, { minWidth: 185, height: 500, x: selectedX }, 0)
+  //       .set(cards[previous], { x: resetX })
+  //       .play();
+  //   }
+  // }
+
   nextImageHandler = () => {
-    const {imageIndex } = this.state
+    const { imageIndex } = this.state
     // ensures that we don't pass the array limit
     this.setState({
       imageIndex: (imageIndex < (this.state.cards.length -1) ? (imageIndex +1) : 0)
     })
   }
+
+  clickImageHandler = () => {
+    const { imageIndex } = this.state
+    this.setState({
+      imageIndex: imageIndex
+    })
+  }
+
   render() {
+
      let imageGallery = this.state.cards.map ( (e,i) => 
-      <div key={e.id} data-target={i} ref ={card => this.state.cards} id='kurobataCard'> 
-        <img className='card-image' src={e.link} alt={e.description}>
+       <img key={e.id} 
+            data-target={i} 
+            ref={card => this.state.cards} 
+            className='card-wrap'
+            id={'card-el-' + e.id}
+            onClick={this.clickImageHandler} 
+            src={e.link} 
+            alt={e.description}>
         </img>
-      </div>)
+      
+     )
 
     return (
       <div className='wrapper'>
         <div className='index-wrap'>
-          <h5 id='index'> {this.state.imageIndex} / {this.state.imageTotal}</h5>
+          <h5 id='index'> {this.state.imageIndex +1} / {this.state.imageTotal}</h5>
         </div>
         <div className='header-wrap'>
           <div id='title'>
@@ -105,17 +161,21 @@ class App extends Component {
             id='card-el'>
             {i+1} 
             </div>)} */}
-            <div className='card-wrap'>
+            {console.log(imageGallery)}
+            {/* {imageGallery} */}
+           
+            
+            <div>
               {imageGallery[this.state.imageIndex+3]}
             </div>
-            <div className='card-wrap'>
+            <div>
               {imageGallery[this.state.imageIndex+2]}
             </div>
-            <div className='card-wrap'>
+            <div>
               {imageGallery[this.state.imageIndex+1]}
             </div>
-            <div className='card-wrap' id='imageIndex'>
-              {imageGallery[this.state.imageIndex]}
+            <div>
+              {imageGallery[this.state.imageIndex]}             
             </div>
 
           

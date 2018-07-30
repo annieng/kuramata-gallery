@@ -13,29 +13,34 @@
   display: flex;
   height: 1000px;
   width: 1000px;
-  margin-right: 4rem;
-  margin-top: 5rem;
-  overflow: hidden;
+
 }
 .card-wrap {
-  align-self: flex-end;
-  margin-right: 10px;
-  flex: 0 0 100px;
+  margin-top: 50px;
+  margin-right: 100px;
+  /* flex: 0 0 300px; */
   height: 500px;
-  min-width: 200px;
+  width: 200px;
   font-size: 3rem;
   text-align: center;
+  flex-direction: row-reverse;
+  object-fit: fill;
 
 }
 
 .card-image {
+  align-self: flex-end;
+  margin-right: 100px;
   height: 500px;
   min-width: 200px;
   display: block;
   object-fit: fill;
 }
 
-#selected {
-  height: 500px;
+/* #selected {
+  height: 1000px;
   width: 150px;
-}
+  object-fit: fill;
+  align-self: flex-end;
+
+} */
