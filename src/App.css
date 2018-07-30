@@ -1,28 +1,41 @@
 .App {
   text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  margin: 0;
+  padding: 0;
+  flex-direction: row;
+  display: flex;
+  width: 1500px;
+  height: 1000px;
+  position: relative;
+}
+.gallery-wrap {
+  display: flex;
+  height: 1000px;
+  width: 1000px;
+  margin-right: 4rem;
+  margin-top: 5rem;
+  overflow: hidden;
+}
+.card-wrap {
+  align-self: flex-end;
+  margin-right: 10px;
+  flex: 0 0 100px;
+  height: 500px;
+  min-width: 200px;
+  font-size: 3rem;
+  text-align: center;
+
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.card-image {
+  height: 500px;
+  min-width: 200px;
+  display: block;
+  object-fit: fill;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+#selected {
+  height: 500px;
+  width: 150px;
 }
